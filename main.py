@@ -1,10 +1,9 @@
-from urllib import response
 import requests
 import os
 from urllib.parse import unquote, urlparse
 from dotenv import load_dotenv
-from pprint import pprint
 import datetime
+import telegram
 
 
 def image_download(url, path):
@@ -80,9 +79,15 @@ def main():
     nasa_token = os.environ["NASA_TOKEN"]
     if not os.path.exists('images/'):
         os.makedirs('images/')
-    fetch_spacex_last_launch()
-    fetch_nasa_photo_day(nasa_token)
-    fetch_nasa_epic_photo(nasa_token)
+    # fetch_spacex_last_launch()
+    # fetch_nasa_photo_day(nasa_token)
+    # fetch_nasa_epic_photo(nasa_token)
+    
+    load_dotenv()
+    telegram_token = os.environ['TELEGRAM_TOKEN']
+    bot = telegram.Bot(token=telegram_token)
+    chat_id = '@sergeevichevgeniy'
+    bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
     
     
 if __name__=='__main__':
