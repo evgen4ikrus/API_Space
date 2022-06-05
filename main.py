@@ -87,8 +87,8 @@ def main():
     telegram_token = os.environ['TELEGRAM_TOKEN']
     bot = telegram.Bot(token=telegram_token)
     chat_id = '@sergeevichevgeniy'
-    bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
-    
+    # bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
+    bot.send_document(chat_id=chat_id, document=open('images/spacex_0.jpg', 'rb'))
     
 if __name__=='__main__':
     main()
