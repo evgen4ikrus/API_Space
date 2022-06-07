@@ -31,10 +31,12 @@ def endlessly_sends_pictures_for_publication():
             fetch_nasa_day_photo()
             fetch_nasa_epic_photos()
             images = get_file_names('images/')
-        image = random.choice(images)
-        publish_image_to_telegram(image)
+        image = random.choice(images)  
+        image_size = os.stat(f'images/{image}').st_size
+        if image_size < 20000000:
+            publish_image_to_telegram(image)
+            time.sleep(int(delay))
         os.remove(f'images/{image}')
-        time.sleep(int(delay))
 
 
 endlessly_sends_pictures_for_publication()
