@@ -19,7 +19,7 @@ def fetch_nasa_epic_photos():
     response = requests.get(url, params=payload)
     response.raise_for_status()
     epic_photos = response.json()
-    for link_number, photo in enumerate(epic_photos[:3]):
+    for link_number, photo in enumerate(epic_photos):
         photo_datetime = datetime.datetime.fromisoformat(photo['date'])
         url = 'https://api.nasa.gov/EPIC/archive/natural'
         photo_year = photo_datetime.strftime('%Y')
@@ -31,6 +31,7 @@ def fetch_nasa_epic_photos():
         image_expansion = get_image_extension(image_url)
         path = f'images/epic_photo_{link_number}{image_expansion}'
         image_download(image_url, path)
-        
 
-fetch_nasa_epic_photos()
+
+if __name__=='__main__':
+    fetch_nasa_epic_photos()

@@ -9,7 +9,7 @@ def image_download(url, path):
     response.raise_for_status()
     with open(path, 'wb') as file:
         file.write(response.content)
-        
+  
 
 def get_image_extension(url):
     image_url = urlparse(url).path

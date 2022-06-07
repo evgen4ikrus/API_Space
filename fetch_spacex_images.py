@@ -24,4 +24,5 @@ def fetch_spacex_last_launch():
         image_download(photo_link, image_path)
 
 
-fetch_spacex_last_launch()
+if __name__=='__main__':
+    fetch_spacex_last_launch()
