@@ -28,8 +28,8 @@ def fetch_nasa_epic_photos():
         file_name = photo['image']
         response = requests.get(f'{url}/{photo_year}/{photo_month}/{photo_day}/png/{file_name}.png', params=payload)
         image_url = response.url
-        image_expansion = get_image_extension(image_url)
-        path = f'images/epic_photo_{link_number}{image_expansion}'
+        image_extension = get_image_extension(image_url)
+        path = f'images/epic_photo_{link_number}{image_extension}'
         image_download(image_url, path)
 
 

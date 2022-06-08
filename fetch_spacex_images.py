@@ -19,8 +19,8 @@ def fetch_spacex_last_launch():
     except IndexError:
         exit(f"Запуска с номером: {flight_number} не было")
     for image_number, photo_link in enumerate(photos_links):
-        image_expansion = get_image_extension(photo_link)
-        image_path = f'images/spacex_{image_number}{image_expansion}'
+        image_extension = get_image_extension(photo_link)
+        image_path = f'images/spacex_{image_number}{image_extension}'
         image_download(photo_link, image_path)
 
 

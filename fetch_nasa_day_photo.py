@@ -22,8 +22,8 @@ def fetch_nasa_day_photo():
     for link_number, day_photo_link in enumerate(day_photo_links):
         if 'hdurl' in day_photo_link:
             image_url = day_photo_link['hdurl']
-            image_expansion = get_image_extension(image_url)
-            path = f'images/nasa_apod_{link_number}{image_expansion}'
+            image_extension = get_image_extension(image_url)
+            path = f'images/nasa_apod_{link_number}{image_extension}'
             image_download(image_url, path)
 
 
