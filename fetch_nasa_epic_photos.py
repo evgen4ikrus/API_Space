@@ -4,7 +4,7 @@ import os
 import requests
 from dotenv import load_dotenv
 
-from functions import folder_creates, get_image_extension, image_download
+from nasa_spacex_functions import folder_creates, get_image_extension, image_download
 
 
 def fetch_nasa_epic_photos():

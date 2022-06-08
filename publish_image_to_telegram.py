@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from fetch_nasa_day_photo import fetch_nasa_day_photo
 from fetch_nasa_epic_photos import fetch_nasa_epic_photos
 from fetch_spacex_images import fetch_spacex_last_launch
-from functions import get_file_names, folder_creates
+from nasa_spacex_functions import get_file_names, folder_creates
 
 load_dotenv()
 
