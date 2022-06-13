@@ -7,11 +7,8 @@ from dotenv import load_dotenv
 from nasa_spacex_functions import get_image_extension, image_download
 
 
-def fetch_nasa_epic_photos():
+def fetch_nasa_epic_photos(nasa_token, photo_creation_epic_date):
     os.makedirs('images/', exist_ok=True)
-    load_dotenv()
-    nasa_token = os.environ["NASA_TOKEN"]
-    photo_creation_epic_date = os.getenv('PHOTO_CREATING_EPIC_DATE', default='2022-06-05')
     url = f'https://api.nasa.gov/EPIC/api/natural/date/{photo_creation_epic_date}'
     payload = {
         'api_key': nasa_token,
@@ -34,4 +31,7 @@ def fetch_nasa_epic_photos():
 
 
 if __name__=='__main__':
-    fetch_nasa_epic_photos()
+    load_dotenv()
+    nasa_token = os.environ["NASA_TOKEN"]
+    photo_creation_epic_date = os.getenv('PHOTO_CREATING_EPIC_DATE', default='2022-06-05')
+    fetch_nasa_epic_photos(nasa_token, photo_creation_epic_date)

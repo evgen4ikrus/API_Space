@@ -6,10 +6,7 @@ from dotenv import load_dotenv
 from nasa_spacex_functions import get_image_extension, image_download
 
 
-def fetch_nasa_day_photo():
-    load_dotenv()
-    nasa_token = os.environ["NASA_TOKEN"]
-    images_count = os.getenv('IMAGES_NASA_COUNT', default=10)
+def fetch_nasa_day_photo(nasa_token, images_count):
     os.makedirs('images/', exist_ok=True)
     url = 'https://api.nasa.gov/planetary/apod'
     payload = {
@@ -28,4 +25,7 @@ def fetch_nasa_day_photo():
 
 
 if __name__=='__main__':
-    fetch_nasa_day_photo()
+    load_dotenv()
+    nasa_token = os.environ["NASA_TOKEN"]
+    images_count = os.getenv('IMAGES_NASA_COUNT', default=10)
+    fetch_nasa_day_photo(nasa_token, images_count)

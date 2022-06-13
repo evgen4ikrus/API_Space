@@ -1,14 +1,14 @@
 import os
+from dotenv import load_dotenv
 
 import requests
 
 from nasa_spacex_functions import get_image_extension, image_download
 
 
-def fetch_spacex_last_launch():
+def fetch_spacex_last_launch(flight_number):
     os.makedirs('images/', exist_ok=True)
     url = 'https://api.spacexdata.com/v3/launches'
-    flight_number = os.getenv('SPACEX_FLIGHT_NUMBER', default=25)
     payload = {
     'flight_number': flight_number,
     }
@@ -25,4 +25,6 @@ def fetch_spacex_last_launch():
 
 
 if __name__=='__main__':
-    fetch_spacex_last_launch()
+    load_dotenv()
+    flight_number = os.getenv('SPACEX_FLIGHT_NUMBER', default=25)
+    fetch_spacex_last_launch(flight_number)
