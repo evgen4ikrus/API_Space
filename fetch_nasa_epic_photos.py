@@ -4,11 +4,11 @@ import os
 import requests
 from dotenv import load_dotenv
 
-from nasa_spacex_functions import folder_creates, get_image_extension, image_download
+from nasa_spacex_functions import get_image_extension, image_download
 
 
 def fetch_nasa_epic_photos():
-    folder_creates()
+    os.makedirs('images/', exist_ok=True)
     load_dotenv()
     nasa_token = os.environ["NASA_TOKEN"]
     photo_creation_epic_date = os.getenv('PHOTO_CREATING_EPIC_DATE', default='2022-06-05')

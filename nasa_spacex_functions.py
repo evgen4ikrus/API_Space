@@ -24,8 +24,3 @@ def get_file_names(path):
     for image_name in os.listdir(path):
         file_names.append(image_name)
     return file_names
-
-
-def folder_creates():
-    if not os.path.exists('images/'):
-        os.makedirs('images/')

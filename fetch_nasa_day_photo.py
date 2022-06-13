@@ -3,14 +3,14 @@ import os
 import requests
 from dotenv import load_dotenv
 
-from nasa_spacex_functions import folder_creates, get_image_extension, image_download
+from nasa_spacex_functions import get_image_extension, image_download
 
 
 def fetch_nasa_day_photo():
     load_dotenv()
     nasa_token = os.environ["NASA_TOKEN"]
     images_count = os.getenv('IMAGES_NASA_COUNT', default=10)
-    folder_creates()
+    os.makedirs('images/', exist_ok=True)
     url = 'https://api.nasa.gov/planetary/apod'
     payload = {
         'api_key': nasa_token,
