@@ -15,8 +15,8 @@ def get_image_extension(url):
     image_url = urlparse(url).path
     image_url = unquote(image_url, encoding='utf-8', errors='replace')
     name_image = os.path.split(image_url)[1]
-    image_expansion = os.path.splitext(name_image)[1]
-    return image_expansion
+    image_extension = os.path.splitext(name_image)[1]
+    return image_extension
 
 
 def get_file_names(path):
