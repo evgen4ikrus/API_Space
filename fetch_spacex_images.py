@@ -10,7 +10,7 @@ def fetch_spacex_last_launch(flight_number):
     os.makedirs('images/', exist_ok=True)
     url = 'https://api.spacexdata.com/v3/launches'
     payload = {
-    'flight_number': flight_number,
+        'flight_number': flight_number,
     }
     response = requests.get(url, params=payload)
     response.raise_for_status()
@@ -24,7 +24,7 @@ def fetch_spacex_last_launch(flight_number):
         image_download(photo_link, image_path)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     load_dotenv()
     flight_number = os.getenv('SPACEX_FLIGHT_NUMBER', default=25)
     fetch_spacex_last_launch(flight_number)

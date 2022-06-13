@@ -24,8 +24,8 @@ def fetch_nasa_day_photo(nasa_token, images_count):
             image_download(image_url, path)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     load_dotenv()
-    nasa_token = os.environ["NASA_TOKEN"]
+    nasa_token = os.environ['NASA_TOKEN']
     images_count = os.getenv('IMAGES_NASA_COUNT', default=10)
     fetch_nasa_day_photo(nasa_token, images_count)
