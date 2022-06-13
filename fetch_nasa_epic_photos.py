@@ -9,21 +9,21 @@ from nasa_spacex_functions import get_image_extension, image_download
 
 def fetch_nasa_epic_photos(nasa_token, photo_creation_epic_date):
     os.makedirs('images/', exist_ok=True)
-    url = f'https://api.nasa.gov/EPIC/api/natural/date/{photo_creation_epic_date}'
+    photo_info_url = f'https://api.nasa.gov/EPIC/api/natural/date/{photo_creation_epic_date}'
+    photo_url = 'https://api.nasa.gov/EPIC/archive/natural'
     payload = {
         'api_key': nasa_token,
     }
-    response = requests.get(url, params=payload)
+    response = requests.get(photo_info_url, params=payload)
     response.raise_for_status()
     epic_photos = response.json()
     for link_number, photo in enumerate(epic_photos):
         photo_datetime = datetime.datetime.fromisoformat(photo['date'])
-        url = 'https://api.nasa.gov/EPIC/archive/natural'
         photo_year = photo_datetime.strftime('%Y')
         photo_month = photo_datetime.strftime('%m')
         photo_day = photo_datetime.strftime('%d')
         file_name = photo['image']
-        response = requests.get(f'{url}/{photo_year}/{photo_month}/{photo_day}/png/{file_name}.png',
+        response = requests.get(f'{photo_url}/{photo_year}/{photo_month}/{photo_day}/png/{file_name}.png',
                                 params=payload)
         image_url = response.url
         image_extension = get_image_extension(image_url)
