@@ -11,13 +11,19 @@ from fetch_spacex_images import fetch_spacex_last_launch
 from nasa_spacex_functions import get_file_names
 
 
-def publish_image_to_telegram(image):
+def publish_image_to_telegram(image, telegram_token, telegram_chet_id):
     bot = telegram.Bot(token=telegram_token)
     bot.send_document(chat_id=telegram_chet_id,
                       document=open(f'images/{image}', 'rb'))
 
 
-def endlessly_sends_pictures_for_publication():
+def endlessly_sends_pictures_for_publication(telegram_token,
+                                             publication_delay,
+                                             telegram_chet_id,
+                                             nasa_token,
+                                             images_count,
+                                             photo_creation_epic_date,
+                                             flight_number):
     while 1 > 0:
         os.makedirs('images/', exist_ok=True)
         images = get_file_names('images/')
@@ -29,7 +35,7 @@ def endlessly_sends_pictures_for_publication():
         image = random.choice(images)
         image_size = os.stat(f'images/{image}').st_size
         if image_size < 20000000:
-            publish_image_to_telegram(image)
+            publish_image_to_telegram(image, telegram_token, telegram_chet_id)
             time.sleep(int(publication_delay))
         os.remove(f'images/{image}')
 
@@ -44,4 +50,10 @@ if __name__ == '__main__':
     photo_creation_epic_date = os.getenv('PHOTO_CREATING_EPIC_DATE',
                                          default='2022-06-05')
     flight_number = os.getenv('SPACEX_FLIGHT_NUMBER', default=25)
-    endlessly_sends_pictures_for_publication()
+    endlessly_sends_pictures_for_publication(telegram_token,
+                                             publication_delay,
+                                             telegram_chet_id,
+                                             nasa_token,
+                                             images_count,
+                                             photo_creation_epic_date,
+                                             flight_number)
