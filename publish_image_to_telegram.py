@@ -24,7 +24,7 @@ def endlessly_sends_pictures_for_publication(telegram_token,
                                              images_count,
                                              photo_creation_epic_date,
                                              flight_number):
-    while 1 > 0:
+    while True:
         os.makedirs('images/', exist_ok=True)
         images = get_file_names('images/')
         if not images:
