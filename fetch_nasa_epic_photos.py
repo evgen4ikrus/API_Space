@@ -31,7 +31,7 @@ def fetch_nasa_epic_photos(nasa_token, photo_creation_epic_date):
 
 if __name__ == '__main__':
     load_dotenv()
-    nasa_token = os.environ['NASA_TOKEN']
+    nasa_token = os.getenv('NASA_TOKEN')
     photo_creation_epic_date = os.getenv('PHOTO_CREATING_EPIC_DATE',
                                          default='2022-06-05')
     fetch_nasa_epic_photos(nasa_token, photo_creation_epic_date)

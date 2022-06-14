@@ -42,10 +42,10 @@ def endlessly_sends_pictures_for_publication(telegram_token,
 
 if __name__ == '__main__':
     load_dotenv()
-    telegram_token = os.environ['TELEGRAM_TOKEN']
+    telegram_token = os.getenv('TELEGRAM_TOKEN')
     publication_delay = os.getenv('PUBLICATION_DELAY', default=14400)
     telegram_chet_id = os.getenv('TELEGRAM_CHAT_ID')
-    nasa_token = os.environ['NASA_TOKEN']
+    nasa_token = os.getenv('NASA_TOKEN')
     images_count = os.getenv('IMAGES_NASA_COUNT', default=10)
     photo_creation_epic_date = os.getenv('PHOTO_CREATING_EPIC_DATE',
                                          default='2022-06-05')
