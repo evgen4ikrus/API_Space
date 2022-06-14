@@ -13,8 +13,8 @@ from nasa_spacex_functions import get_file_names
 
 def publish_image_to_telegram(image, telegram_token, telegram_chat_id):
     bot = telegram.Bot(token=telegram_token)
-    bot.send_document(chat_id=telegram_chat_id,
-                      document=open(f'images/{image}', 'rb'))
+    with open(f'images/{image}', 'rb') as document:
+        bot.send_document(chat_id=telegram_chat_id, document=document)
 
 
 def endlessly_sends_pictures_for_publication(telegram_token,
