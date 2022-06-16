@@ -19,9 +19,9 @@ def fetch_nasa_epic_photos(nasa_token, photo_creation_epic_date):
     epic_photos = response.json()
     for link_number, photo in enumerate(epic_photos):
         photo_datetime = datetime.datetime.fromisoformat(photo['date'])
-        photo_date = photo_datetime.strftime('%Y/%m/%d')
+        formatted_datetime = photo_datetime.strftime('%Y/%m/%d')
         file_name = photo['image']
-        response = requests.get(f'{photo_url}/{photo_date}/png/{file_name}.png',
+        response = requests.get(f'{photo_url}/{formatted_datetime}/png/{file_name}.png',
                                 params=payload)
         image_url = response.url
         image_extension = get_image_extension(image_url)
