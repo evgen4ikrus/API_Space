@@ -24,8 +24,8 @@ def endlessly_sends_pictures_for_publication(telegram_token,
                                              images_count,
                                              photo_creation_epic_date,
                                              flight_number):
+    os.makedirs('images/', exist_ok=True)
     while True:
-        os.makedirs('images/', exist_ok=True)
         images = get_file_names('images/')
         if not images:
             fetch_spacex_last_launch(flight_number)
